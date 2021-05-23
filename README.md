@@ -39,3 +39,25 @@ Após tudo isso, vamos rodar o comando para que o adonis crie nossos arquivos de
 ```
 node ace invoke @adonisjs/lucid
 ```
+
+Após rodar é só selecionar suas configurações
+
+Com isso entre no seu arquivo `.env` e `.env.example` e coloque as informações de database, password e usename para conexão com seu banco de dados escolhido
+
+### Criando Models no adonis
+
+Rode o seguinte comando, para a criação do seu model:
+
+```
+node ace make:model <Nome do model que quer criar>
+```
+
+---
+
+### Criando as Migrations no adonis
+
+Rode o seguinte comando, para a criação do seu model:
+
+```
+node ace make:migration <Nome da migration que quer criar>
+```
