@@ -31,4 +31,12 @@ export default class UsersController {
     UsersController.users.push(user);
     return user;
   }
+  public async destroy({ params }: HttpContextContract) {
+    const userId = Number(params.id);
+    UsersController.users.filter((u) => u.id !== userId);
+  }
+  public async show({ params }: HttpContextContract) {
+    const userId = Number(params.id);
+    UsersController.users.filter((u) => u.id !== userId);
+  }
 }
