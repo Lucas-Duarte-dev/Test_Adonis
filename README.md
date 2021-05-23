@@ -61,3 +61,9 @@ Rode o seguinte comando, para a criação do seu model:
 ```
 node ace make:migration <Nome da migration que quer criar>
 ```
+
+Após a criação da mesma, podemos rodalas para adicionar as tabelas no banco de dados, com o comando:
+
+```
+yarn build && node ace migration:run
+```
