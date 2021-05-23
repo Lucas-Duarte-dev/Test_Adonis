@@ -14,7 +14,7 @@ export default class UsersController {
     return await User.all();
   }
   public async store({ request }: HttpContextContract) {
-    const { email, name, password, phone }: Users = request.only([
+    const { name, email, phone, password }: Users = request.only([
       "name",
       "email",
       "phone",
@@ -22,14 +22,8 @@ export default class UsersController {
     ]);
 
     const passwordHash = await hash(password, 8);
-    const user = {
-      name,
-      email,
-      phone,
-      password: passwordHash,
-    };
 
-    return await User.create(user);
+    return await User.create({ name, email, phone, password: passwordHash });
   }
   public async destroy({ params }: HttpContextContract) {
     const user = await User.find(params.id);

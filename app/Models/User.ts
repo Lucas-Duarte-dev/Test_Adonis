@@ -12,10 +12,10 @@ export default class User extends BaseModel {
   public email: string;
 
   @column()
-  public password: string;
+  phone: string;
 
   @column()
-  phone: string;
+  public password: string;
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime;
