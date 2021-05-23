@@ -19,6 +19,7 @@
     "@adonisjs/core": "^5.1.0",
     "@adonisjs/lucid": "^10.0.0",
     "@adonisjs/repl": "^3.0.0",
+    "luxon": "^1.27.0",
     "pg": "^8.6.0",
     "proxy-addr": "^2.0.6",
     "reflect-metadata": "^0.1.13",
