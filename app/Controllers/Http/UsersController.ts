@@ -1,42 +1,41 @@
 import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
+import User from "App/Models/User";
+import { hash } from "bcryptjs";
+
+interface Users {
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+}
 
 export default class UsersController {
-  private static users = [
-    {
-      id: 1,
-      name: "Lucas",
-      email: "test@test.com",
-    },
-    {
-      id: 2,
-      name: "Jorge",
-      email: "test1@test.com",
-    },
-  ];
-
-  public async index({ request }: HttpContextContract) {
-    return UsersController.users;
+  public async index() {
+    return await User.all();
   }
   public async store({ request }: HttpContextContract) {
-    const data: { name: string; email: string } = request.only([
+    const { email, name, password, phone }: Users = request.only([
       "name",
       "email",
+      "phone",
+      "password",
     ]);
-    const newId = UsersController.users.length + 1;
+
+    const passwordHash = await hash(password, 8);
     const user = {
-      id: newId,
-      name: data.name,
-      email: data.email,
+      name,
+      email,
+      phone,
+      password: passwordHash,
     };
-    UsersController.users.push(user);
-    return user;
+
+    return await User.create(user);
   }
   public async destroy({ params }: HttpContextContract) {
-    const userId = Number(params.id);
-    UsersController.users.filter((u) => u.id !== userId);
+    const user = await User.find(params.id);
+    user?.delete();
   }
   public async show({ params }: HttpContextContract) {
-    const userId = Number(params.id);
-    UsersController.users.filter((u) => u.id !== userId);
+    return await User.find(params.id);
   }
 }
