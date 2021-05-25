@@ -1,7 +1,7 @@
 import BaseSchema from "@ioc:Adonis/Lucid/Schema";
 
 export default class Users extends BaseSchema {
-  protected tableName = "users";
+  protected tableName = "";
 
   async up() {
     this.schema.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
