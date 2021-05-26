@@ -67,3 +67,19 @@ Após a criação da mesma, podemos rodalas para adicionar as tabelas no banco d
 ```
 yarn build && node ace migration:run
 ```
+
+### Criando o middlewarw de autenticação
+
+Primeiro vamos instalar o pacote de autenticação do adonis, é só rodar o comando:
+
+```
+yarn add @adonisjs/auth
+```
+
+após isso vamos fazer com que o adonis configure esse pacote, para que possamos usar a instancia de auth em nossa aplicação, só rodar o comando:
+
+```
+node ace configure @adonisjs/auth
+```
+
+e escolher as configuração referente a sua aplicação
