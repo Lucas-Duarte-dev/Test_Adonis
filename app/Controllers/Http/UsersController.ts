@@ -1,6 +1,6 @@
+import Hash from "@ioc:Adonis/Core/Hash";
 import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import User from "App/Models/User";
-import { hash } from "bcryptjs";
 
 interface Users {
   name: string;
@@ -21,9 +21,8 @@ export default class UsersController {
       "password",
     ]);
 
-    const passwordHash = await hash(password, 8);
-
-    return await User.create({ name, email, phone, password: passwordHash });
+    const hashedPassword = await Hash.make(password);
+    return await User.create({ name, email, phone, password: hashedPassword });
   }
   public async destroy({ params }: HttpContextContract) {
     const user = await User.find(params.id);
