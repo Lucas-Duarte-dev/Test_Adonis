@@ -83,3 +83,5 @@ node ace configure @adonisjs/auth
 ```
 
 e escolher as configuração referente a sua aplicação
+
+- Api Token: Caso tenha escolhido esse tipo de autenticação e esteja usando um banco de dados relacional, após a criação de todas as etapas rode o comando: `node ace migration:run`, para criar a tabela onde irá salvar o token de usuário
