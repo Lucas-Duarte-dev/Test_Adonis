@@ -7,15 +7,16 @@ export default class AuthController {
     const { email, password } = request.all();
 
     const user = await User.findBy("email", email);
+
     if (!user) {
       return response.badRequest("Invalid credentials");
     }
     if (!(await Hash.verify(user.password, password))) {
       return response.badRequest("Invalid credentials");
     }
-    try {
-      const token = await auth.use("api").generate(user);
 
+    try {
+      const token = await auth.attempt(email, password);
       return token;
     } catch (error) {
       return response.badRequest("Invalid credentials");
