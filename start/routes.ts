@@ -4,5 +4,6 @@ Route.resource("users", "UsersController").except(["update"]).apiOnly();
 Route.post("login", "AuthController.authenticate");
 
 Route.group(() => {
-  Route.resource("posts/:user_id", "PostsController").apiOnly();
+  Route.post("posts/:user_id", "PostsController.store").middleware("auth");
+  Route.resource("posts/", "PostsController").except(["store"]).apiOnly();
 }).middleware("auth");

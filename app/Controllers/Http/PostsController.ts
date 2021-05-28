@@ -29,12 +29,17 @@ export default class PostsController {
     }
 
     return await Post.create({
-      user_id: user_id,
+      user_id,
       title,
       description,
       price_condom,
       rate,
       price_immob,
     });
+  }
+
+  public async index() {
+    const posts = await Post.all();
+    return posts;
   }
 }

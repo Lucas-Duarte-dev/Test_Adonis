@@ -11,7 +11,7 @@ interface Users {
 
 export default class UsersController {
   public async index() {
-    return await User.all();
+    return await User.query().preload("posts");
   }
   public async store({ request }: HttpContextContract) {
     const { name, email, phone, password }: Users = request.only([

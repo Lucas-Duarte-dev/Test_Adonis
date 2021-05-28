@@ -1,5 +1,6 @@
 import { DateTime } from "luxon";
-import { BaseModel, column } from "@ioc:Adonis/Lucid/Orm";
+import { BaseModel, column, HasMany, hasMany } from "@ioc:Adonis/Lucid/Orm";
+import Post from "./Post";
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -12,7 +13,12 @@ export default class User extends BaseModel {
   public email: string;
 
   @column()
-  phone: string;
+  public phone: string;
+
+  @hasMany(() => Post, {
+    foreignKey: "user_id",
+  })
+  public posts: HasMany<typeof Post>;
 
   @column()
   public password: string;
