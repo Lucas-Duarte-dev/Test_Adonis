@@ -6,7 +6,7 @@ export default class AuthController {
   async authenticate({ auth, request, response }: HttpContextContract) {
     const { email, password } = request.all();
 
-    const user = await User.findBy("email", email);
+    const user = await User.findByOrFail("email", email);
 
     if (!user) {
       return response.badRequest("Invalid credentials");

@@ -1,5 +1,13 @@
 import { DateTime } from "luxon";
-import { BaseModel, column } from "@ioc:Adonis/Lucid/Orm";
+import {
+  BaseModel,
+  column,
+  HasMany,
+  hasMany,
+  hasOne,
+} from "@ioc:Adonis/Lucid/Orm";
+import Address from "./Address";
+import { HasOne } from "@ioc:Adonis/Lucid/Relations";
 
 export default class Post extends BaseModel {
   @column({ isPrimary: true })
@@ -22,6 +30,11 @@ export default class Post extends BaseModel {
 
   @column()
   public user_id: string;
+
+  @hasMany(() => Address, {
+    foreignKey: "post_id",
+  })
+  public addresses: HasMany<typeof Address>;
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime;

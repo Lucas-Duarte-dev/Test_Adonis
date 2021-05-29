@@ -1,10 +1,14 @@
 import Route from "@ioc:Adonis/Core/Route";
 
 Route.resource("users", "UsersController").except(["update"]).apiOnly();
+
 Route.post("login", "AuthController.authenticate");
 
+Route.post("address/:post_id", "AddressesController.store");
+
+Route.get("posts", "PostsController.index");
+
 Route.group(() => {
-  Route.get("posts", "PostsController.store");
   Route.resource("posts/:user_id", "PostsController")
     .except(["index"])
     .apiOnly();
