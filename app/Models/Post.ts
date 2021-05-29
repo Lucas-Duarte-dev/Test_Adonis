@@ -1,13 +1,6 @@
 import { DateTime } from "luxon";
-import {
-  BaseModel,
-  column,
-  HasMany,
-  hasMany,
-  hasOne,
-} from "@ioc:Adonis/Lucid/Orm";
+import { BaseModel, column, HasMany, hasMany } from "@ioc:Adonis/Lucid/Orm";
 import Address from "./Address";
-import { HasOne } from "@ioc:Adonis/Lucid/Relations";
 
 export default class Post extends BaseModel {
   @column({ isPrimary: true })
