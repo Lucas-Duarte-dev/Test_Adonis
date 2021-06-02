@@ -8,6 +8,8 @@ Route.post("address/:post_id", "AddressesController.store");
 
 Route.get("posts", "PostsController.index");
 
+Route.post("complement/:post_id", "ComplementsController.store");
+
 Route.group(() => {
   Route.resource("posts/:user_id", "PostsController")
     .except(["index"])

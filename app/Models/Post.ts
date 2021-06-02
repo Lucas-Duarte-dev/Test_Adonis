@@ -1,6 +1,7 @@
 import { DateTime } from "luxon";
 import { BaseModel, column, HasMany, hasMany } from "@ioc:Adonis/Lucid/Orm";
 import Address from "./Address";
+import Complement from "./Complement";
 
 export default class Post extends BaseModel {
   @column({ isPrimary: true })
@@ -28,6 +29,11 @@ export default class Post extends BaseModel {
     foreignKey: "post_id",
   })
   public addresses: HasMany<typeof Address>;
+
+  @hasMany(() => Complement, {
+    foreignKey: "post_id",
+  })
+  public complements: HasMany<typeof Complement>;
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime;
