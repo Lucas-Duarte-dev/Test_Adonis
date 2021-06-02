@@ -7,6 +7,7 @@ export default class Complements extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid("id").primary().defaultTo(this.raw("uuid_generate_v4()"));
       table.boolean("garage").notNullable();
+
       table.integer("bedrooms").notNullable();
       table.integer("bathrooms").notNullable();
       table.float("size").notNullable();
@@ -15,6 +16,7 @@ export default class Complements extends BaseSchema {
         .references("id")
         .inTable("posts")
         .onDelete("CASCADE");
+      table.float("size").notNullable();
       table.timestamps(true);
     });
   }
