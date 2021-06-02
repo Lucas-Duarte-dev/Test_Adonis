@@ -39,7 +39,9 @@ export default class PostsController {
   }
 
   public async index() {
-    const posts = await Post.query().preload("addresses");
+    const posts = await Post.query()
+      .preload("complements")
+      .preload("addresses");
     return posts;
   }
 }
